@@ -30,26 +30,26 @@ spring:
       enabled: true
       charset: UTF-8
   datasource:
-    # ±ØÌî£¬ÓëÊı¾İ¿âÍ¬Ãû
+    # å¿…å¡«ï¼Œä¸æ•°æ®åº“åŒå
     database: ${DATASOURCE_DATABASE:price_list}
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/price_list?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8}
     username: ${DATASOURCE_USERNAME:root}
     password: ${DATASOURCE_PASSWORD:Jabez2020}
-    #hikariÊı¾İ¿âÁ¬½Ó³Ø
+    #hikariæ•°æ®åº“è¿æ¥æ± 
     hikari:
       pool-name: price_list-hikaricp
-      # ×îĞ¡¿ÕÏĞÁ¬½ÓÊıÁ¿
+      # æœ€å°ç©ºé—²è¿æ¥æ•°é‡
       minimum-idle: 10
-      # ¿ÕÏĞÁ¬½Ó´æ»î×î´óÊ±¼ä£¬Ä¬ÈÏ600000£¨10·ÖÖÓ£©
+      # ç©ºé—²è¿æ¥å­˜æ´»æœ€å¤§æ—¶é—´ï¼Œé»˜è®¤600000ï¼ˆ10åˆ†é’Ÿï¼‰
       idle-timeout: 180000
-      # Á¬½Ó³Ø×î´óÁ¬½ÓÊı£¬Ä¬ÈÏÊÇ10
+      # è¿æ¥æ± æœ€å¤§è¿æ¥æ•°ï¼Œé»˜è®¤æ˜¯10
       maximum-pool-size: 50
-      # ´ËÊôĞÔ¿ØÖÆ´Ó³Ø·µ»ØµÄÁ¬½ÓµÄÄ¬ÈÏ×Ô¶¯Ìá½»ĞĞÎª,Ä¬ÈÏÖµ£ºtrue
+      # æ­¤å±æ€§æ§åˆ¶ä»æ± è¿”å›çš„è¿æ¥çš„é»˜è®¤è‡ªåŠ¨æäº¤è¡Œä¸º,é»˜è®¤å€¼ï¼štrue
       auto-commit: true
-      # ´ËÊôĞÔ¿ØÖÆ³ØÖĞÁ¬½ÓµÄ×î³¤ÉúÃüÖÜÆÚ£¬Öµ0±íÊ¾ÎŞÏŞÉúÃüÖÜÆÚ£¬Ä¬ÈÏ1800000¼´30·ÖÖÓ
+      # æ­¤å±æ€§æ§åˆ¶æ± ä¸­è¿æ¥çš„æœ€é•¿ç”Ÿå‘½å‘¨æœŸï¼Œå€¼0è¡¨ç¤ºæ— é™ç”Ÿå‘½å‘¨æœŸï¼Œé»˜è®¤1800000å³30åˆ†é’Ÿ
       max-lifetime: 600000
-      # Êı¾İ¿âÁ¬½Ó³¬Ê±Ê±¼ä,Ä¬ÈÏ30Ãë£¬¼´30000
+      # æ•°æ®åº“è¿æ¥è¶…æ—¶æ—¶é—´,é»˜è®¤30ç§’ï¼Œå³30000
       connection-timeout: 30000
       connection-test-query: 'SELECT 1'
 mybatis:
@@ -57,20 +57,11 @@ mybatis:
     mapUnderscoreToCamelCase: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-price-list:
-  auth:
-    user-name: ${RM_AUTH_USERNAME:admin}
-    password: ${RM_AUTH_PASSWORD:admin}
-    # avatar(absolute director)
-    avatar-path: /data/avatar/
-    authorization:
-      enabled: false
-      server: xxx
-      site-key: xxx
-      site-secret: xxx
-  installation:
-    # redis.conf(absolute director)
-    conf-path: /data/conf/
+uu:
+  book:
+    auth:
+      user-name: ${UU_AUTH_USERNAME:admin}
+      password: ${UU_AUTH_PASSWORD:admin}
 
 logging:
   level:
