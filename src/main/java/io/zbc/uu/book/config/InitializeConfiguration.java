@@ -19,11 +19,8 @@ public class InitializeConfiguration implements ApplicationListener<ContextRefre
     @Autowired
     private IUserDao userDao;
 
-    @Value("${price-list.auth.user-name:admin}")
-    private String userName;
-
-    @Value("${price-list.auth.password:admin}")
-    private String password;
+    @Autowired
+    private BookProperties bookProperties;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -39,7 +36,7 @@ public class InitializeConfiguration implements ApplicationListener<ContextRefre
     @Transactional
     public void initDefaultAuth() {
         User user = buildDefaultUser();
-        User existUser = userDao.selectUserByName(userName);
+        User existUser = userDao.selectUserByName(bookProperties.getAuth().getUserName());
         if (existUser != null) {
             user.setUserId(existUser.getUserId());
         } else {
@@ -49,8 +46,8 @@ public class InitializeConfiguration implements ApplicationListener<ContextRefre
 
     private User buildDefaultUser() {
         User user = new User();
-        user.setUserName(userName);
-        user.setPassword(password);
+        user.setUserName(bookProperties.getAuth().getUserName());
+        user.setPassword(bookProperties.getAuth().getPassword());
         return user;
     }
 
