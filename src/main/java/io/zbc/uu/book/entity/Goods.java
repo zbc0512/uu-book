@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
-public class GoodsInfo {
+public class Goods {
 
     private Integer goodsId;
     private String goodsName;
@@ -16,11 +16,11 @@ public class GoodsInfo {
     private String supermarket;
     private Date recordDate;
 
-    public GoodsInfo() {
+    public Goods() {
 
     }
 
-    public GoodsInfo(String goodsName, double goodsPrice, Integer quantity, String unit, String spec, String type, String supermarket, Date recordDate) {
+    public Goods(String goodsName, double goodsPrice, Integer quantity, String unit, String spec, String type, String supermarket, Date recordDate) {
         this.goodsName = goodsName;
         this.goodsPrice = goodsPrice;
         this.quantity = quantity;

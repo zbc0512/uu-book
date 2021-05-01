@@ -1,8 +1,8 @@
 package io.zbc.uu.book.controller;
 
-import io.zbc.uu.book.entity.GoodsInfo;
+import io.zbc.uu.book.entity.Goods;
 import io.zbc.uu.book.entity.Result;
-import io.zbc.uu.book.service.IGoodsInfoService;
+import io.zbc.uu.book.service.IGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,32 +17,32 @@ import java.util.List;
 public class GoodsController {
 
     @Autowired
-    IGoodsInfoService goodsInfoService;
+    IGoodsService goodsService;
 
-    @RequestMapping(value = "/getAllGoodsInfo/", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllGoods/", method = RequestMethod.GET)
     @ResponseBody
-    public Result getAllGoodsInfo() {
-        List<GoodsInfo> goodsInfoList = goodsInfoService.getAllGoodsInfoList();
-        if (goodsInfoList == null || goodsInfoList.isEmpty()) {
+    public Result getAllGoods() {
+        List<Goods> goodsList = goodsService.getAllGoodsList();
+        if (goodsList == null || goodsList.isEmpty()) {
             return Result.failResult();
         }
-        return Result.successResult(goodsInfoList);
+        return Result.successResult(goodsList);
     }
 
-    @RequestMapping(value = "/getGoodsInfoByName", method = RequestMethod.POST)
+    @RequestMapping(value = "/getGoodsByName", method = RequestMethod.POST)
     @ResponseBody
-    public Result getGoodsInfoByName(@RequestBody GoodsInfo goodsInfo) {
-        List<GoodsInfo> goodsInfoList = goodsInfoService.getGoodsInfoByName(goodsInfo.getGoodsName());
-        if (goodsInfoList == null || goodsInfoList.isEmpty()) {
+    public Result getGoodsByName(@RequestBody Goods goods) {
+        List<Goods> goodsList = goodsService.getGoodsByName(goods.getGoodsName());
+        if (goodsList == null || goodsList.isEmpty()) {
             return Result.failResult();
         }
-        return Result.successResult(goodsInfoList);
+        return Result.successResult(goodsList);
     }
 
-    @RequestMapping(value = "/addGoodsInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/addGoods", method = RequestMethod.POST)
     @ResponseBody
-    public Result addGoodsInfo(@RequestBody GoodsInfo goodsInfo) {
-        boolean result = goodsInfoService.addGoodsInfo(goodsInfo);
+    public Result addGoods(@RequestBody Goods goods) {
+        boolean result = goodsService.addGoods(goods);
         return result ? Result.successResult() : Result.failResult();
     }
 

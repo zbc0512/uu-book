@@ -1,35 +1,35 @@
 package io.zbc.uu.book.dao;
 
-import io.zbc.uu.book.entity.GoodsInfo;
+import io.zbc.uu.book.entity.Goods;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
-public interface IGoodsInfoDao {
+public interface IGoodsDao {
 
-    @Select("SELECT * FROM goods_info")
-    List<GoodsInfo> selectAllGoodsInfo();
+    @Select("SELECT * FROM goods")
+    List<Goods> selectAllGoods();
 
-    @Select("SELECT * FROM goods_info WHERE goods_id = #{goodsId}")
-    GoodsInfo selectGoodsInfoById(Integer goodsId);
+    @Select("SELECT * FROM goods WHERE goods_id = #{goodsId}")
+    Goods selectGoodsById(Integer goodsId);
 
-    @Select("SELECT * FROM goods_info WHERE goods_name like concat('%', #{goodsName}, '%')")
-    List<GoodsInfo> selectGoodsInfoByName(String goodsName);
+    @Select("SELECT * FROM goods WHERE goods_name like concat('%', #{goodsName}, '%')")
+    List<Goods> selectGoodsByName(String goodsName);
 
-    @Insert("INSERT INTO `price_list`.`goods_info` ( " +
+    @Insert("INSERT INTO `price_list`.`goods` ( " +
             "`goods_name`, `goods_price`, `quantity`, `unit`, `spec`, `type`, `supermarket`, `record_date` )" +
             "VALUES" +
             "(#{goodsName}, #{goodsPrice}, #{quantity}, #{unit}, #{spec}, #{type}, #{supermarket}, #{recordDate})")
-    Integer insertGoodsInfo(GoodsInfo goodsInfo);
+    Integer insertGoods(Goods Goods);
 
     @Update("")
-    int updateGoodsInfo(GoodsInfo goodsInfo);
+    int updateGoods(Goods Goods);
 
-    @Delete("DELETE FROM GoodsInfo WHERE goods_id = #{goodsId}")
-    int deleteGoodsInfoById(Integer goodsId);
+    @Delete("DELETE FROM Goods WHERE goods_id = #{goodsId}")
+    int deleteGoodsById(Integer goodsId);
 
-    @Select("create TABLE IF NOT EXISTS `goods_info` ( " +
+    @Select("create TABLE IF NOT EXISTS `goods` ( " +
             " `goods_id` integer(4) NOT NULL AUTO_INCREMENT, " +
             " `goods_name` varchar(45) DEFAULT NULL COMMENT '名称', " +
             " `goods_price` double(10,2) DEFAULT NULL COMMENT '价格', " +
@@ -43,6 +43,6 @@ public interface IGoodsInfoDao {
             " `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, " +
             " PRIMARY KEY (`goods_id`) " +
             ") ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;")
-    void createGoodsInfoTable();
+    void createGoodsTable();
 
 }

@@ -1,6 +1,6 @@
 package io.zbc.uu.book.config;
 
-import io.zbc.uu.book.dao.IGoodsInfoDao;
+import io.zbc.uu.book.dao.IGoodsDao;
 import io.zbc.uu.book.dao.IUserDao;
 import io.zbc.uu.book.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class InitializeConfiguration implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
-    private IGoodsInfoDao goodsInfoDao;
+    private IGoodsDao goodsDao;
 
     @Autowired
     private IUserDao userDao;
@@ -29,7 +29,7 @@ public class InitializeConfiguration implements ApplicationListener<ContextRefre
     }
 
     private void createTables() {
-        goodsInfoDao.createGoodsInfoTable();
+        goodsDao.createGoodsTable();
         userDao.createUserTable();
     }
 
