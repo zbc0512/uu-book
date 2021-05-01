@@ -33,9 +33,9 @@ spring:
     # 必填，与数据库同名
     database: ${DATASOURCE_DATABASE:price_list}
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/price_list?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8}
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/uu_book?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8}
     username: ${DATASOURCE_USERNAME:root}
-    password: ${DATASOURCE_PASSWORD:Jabez2020}
+    password: ${DATASOURCE_PASSWORD:root}
     #hikari数据库连接池
     hikari:
       pool-name: price_list-hikaricp
