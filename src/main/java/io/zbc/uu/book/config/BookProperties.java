@@ -2,7 +2,9 @@ package io.zbc.uu.book.config;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
+@Component
 @ConfigurationProperties(prefix = "uu.book")
 public class BookProperties {
 
