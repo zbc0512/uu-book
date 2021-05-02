@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IGoodsService {
 
-    List<Goods> getAllGoodsList();
+    List<Goods> getAllGoods();
 
     List<Goods> getGoodsByName(String goodsName);
 

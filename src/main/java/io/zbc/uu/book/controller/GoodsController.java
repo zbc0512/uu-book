@@ -19,14 +19,14 @@ public class GoodsController {
     @Autowired
     IGoodsService goodsService;
 
-    @RequestMapping(value = "/getAllGoods/", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllGoods", method = RequestMethod.POST)
     @ResponseBody
     public Result getAllGoods() {
-        List<Goods> goodsList = goodsService.getAllGoodsList();
-        if (goodsList == null || goodsList.isEmpty()) {
+        List<Goods> goods = goodsService.getAllGoods();
+        if (goods == null || goods.isEmpty()) {
             return Result.failResult();
         }
-        return Result.successResult(goodsList);
+        return Result.successResult(goods);
     }
 
     @RequestMapping(value = "/getGoodsByName", method = RequestMethod.POST)

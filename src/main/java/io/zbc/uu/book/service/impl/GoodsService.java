@@ -16,22 +16,22 @@ public class GoodsService implements IGoodsService {
     private static final Logger logger = LoggerFactory.getLogger(GoodsService.class);
 
     @Autowired
-    IGoodsDao GoodsDao;
+    IGoodsDao goodsDao;
 
     @Override
-    public List<Goods> getAllGoodsList() {
-        return GoodsDao.selectAllGoods();
+    public List<Goods> getAllGoods() {
+        return goodsDao.selectAllGoods();
     }
 
     @Override
     public List<Goods> getGoodsByName(String goodsName) {
-        return GoodsDao.selectGoodsByName(goodsName);
+        return goodsDao.selectGoodsByName(goodsName);
     }
 
     @Override
     public boolean addGoods(Goods goods) {
         try {
-            return GoodsDao.insertGoods(goods) > 0;
+            return goodsDao.insertGoods(goods) > 0;
         } catch (Exception e) {
             logger.error("Add goods failed, " + goods, e);
             return false;
