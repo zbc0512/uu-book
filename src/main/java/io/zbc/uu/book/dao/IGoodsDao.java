@@ -17,7 +17,7 @@ public interface IGoodsDao {
     @Select("SELECT * FROM goods WHERE goods_name like concat('%', #{goodsName}, '%')")
     List<Goods> selectGoodsByName(String goodsName);
 
-    @Insert("INSERT INTO `price_list`.`goods` ( " +
+    @Insert("INSERT INTO `uu_book`.`goods` ( " +
             "`goods_name`, `goods_price`, `quantity`, `unit`, `spec`, `type`, `supermarket`, `record_date` )" +
             "VALUES" +
             "(#{goodsName}, #{goodsPrice}, #{quantity}, #{unit}, #{spec}, #{type}, #{supermarket}, #{recordDate})")
