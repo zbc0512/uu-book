@@ -32,11 +32,11 @@ public class GoodsController {
     @RequestMapping(value = "/getGoodsByName", method = RequestMethod.POST)
     @ResponseBody
     public Result getGoodsByName(@RequestBody Goods goods) {
-        List<Goods> goods = goodsService.getGoodsByName(goods.getGoodsName());
-        if (goods == null || goods.isEmpty()) {
+        List<Goods> goodsList = goodsService.getGoodsByName(goods.getGoodsName());
+        if (goodsList == null || goodsList.isEmpty()) {
             return Result.failResult();
         }
-        return Result.successResult(goods);
+        return Result.successResult(goodsList);
     }
 
     @RequestMapping(value = "/addGoods", method = RequestMethod.POST)
