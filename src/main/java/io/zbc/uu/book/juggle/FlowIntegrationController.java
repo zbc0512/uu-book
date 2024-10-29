@@ -1,0 +1,57 @@
+package io.zbc.uu.book.juggle;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import net.somta.core.protocol.ResponseDataResult;
+import net.somta.juggle.client.model.FlowResultModel;
+import net.somta.juggle.starter.impl.IJuggleTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
+import java.util.Map;
+
+@Tag(name = "业务服务集成Juggle接口")
+@RestController
+@RequestMapping("/flow")
+public class FlowIntegrationController {
+
+    @Autowired
+    private IJuggleTemplate juggleTemplate;
+
+    @Operation(summary = "集成触发流程")
+    @PostMapping("/triggerFlow")
+    public BaseResponse<FlowResultModel> triggerFlow(@RequestBody TriggerFlowParam triggerFlowParam) {
+        try {
+            ResponseDataResult<FlowResultModel> flowResult = juggleTemplate.triggerFlow(triggerFlowParam.getFlowVersion(),
+                    triggerFlowParam.getFlowKey(), triggerFlowParam.getTriggerData());
+            if (flowResult.isSuccess()) {
+                return BaseResponse.setSuccessResponse(flowResult.getResult());
+            } else {
+                return BaseResponse.setErrorResponse(flowResult.getErrorMsg());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return BaseResponse.setErrorResponse("调用流程异常了");
+        }
+    }
+
+    @Operation(summary = "集成获取异步流程结果")
+    @PostMapping("/getAsyncFlowResult")
+    public BaseResponse<Map<String, Object>> getAsyncFlowResult(String flowInstanceId) {
+        try {
+            ResponseDataResult<Map<String, Object>> asyncFlowResult = juggleTemplate.getAsyncFlowResult(flowInstanceId);
+            if (asyncFlowResult.isSuccess()) {
+                return BaseResponse.setSuccessResponse(asyncFlowResult.getResult());
+            } else {
+                return BaseResponse.setErrorResponse(asyncFlowResult.getErrorMsg());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return BaseResponse.setErrorResponse("调用异步流程流程异常了");
+        }
+    }
+}
