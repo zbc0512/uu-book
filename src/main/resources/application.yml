@@ -18,7 +18,7 @@ juggle:
   #Juggle服务部署的地址
   server-addr: http://127.0.0.1:9127
   #Juggle后台申请的令牌
-  access-token: eyJ1c2VySWQiOjEsInRpbWVzdGFtcCI6MTcxMjE2MzgyNzE2OH0=
+  access-token: eyJ1c2VySWQiOjEsInRpbWVzdGFtcCI6MTczMDIwNDI4ODE3MX0=
 
 spring:
   devtools:
