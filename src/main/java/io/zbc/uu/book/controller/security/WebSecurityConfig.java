@@ -56,17 +56,17 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
-            if (user == null) {
-                response.setCharacterEncoding("UTF-8");
-                response.setContentType("application/json; charset=utf-8");
-                try {
-                    PrintWriter out = response.getWriter();
-                    response.sendError(401, "Unauthorized");
-                    out.append(JSONObject.toJSON(Result.notLoginResult()).toString());
-                } catch (Exception ignore) {
-                }
-                return false;
-            }
+//            if (user == null) {
+//                response.setCharacterEncoding("UTF-8");
+//                response.setContentType("application/json; charset=utf-8");
+//                try {
+//                    PrintWriter out = response.getWriter();
+//                    response.sendError(401, "Unauthorized");
+//                    out.append(JSONObject.toJSON(Result.notLoginResult()).toString());
+//                } catch (Exception ignore) {
+//                }
+//                return false;
+//            }
             return true;
         }
     }
